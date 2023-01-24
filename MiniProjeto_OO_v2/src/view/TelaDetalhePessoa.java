@@ -15,17 +15,10 @@ public class TelaDetalhePessoa implements ActionListener {
 	private JFrame janela;
 	private JLabel labelNome = new JLabel("Nome: ");
 	private JTextField valorNome;
-	private JLabel labelHoraAula = new JLabel("Valor Hora/Aula (R$): ");
-	private JTextField valorHoraAula;
-	private JLabel labelEnd = new JLabel("Endereco: ");
-	private JTextField valorEnd;
-	private JLabel labelCPF = new JLabel("CPF: ");
-	private JTextField valorCPF;
-	private JLabel labelID = new JLabel("Numero da Identidade: ");
-	private JTextField valorID;
-	private JLabel labelTelefone = new JLabel("Telefone");
-	private JTextField valorDDD;
-	private JTextField valorTelefone;
+	private JLabel labelSexo = new JLabel("Sexo: ");
+	private JTextField valorSexo;
+	private JLabel labelDataNasc = new JLabel("Data de Nacimento: ");
+	private JTextField valorDataNasc;
 	private JButton botaoExcluir = new JButton("Excluir");
 	private JButton botaoSalvar = new JButton("Salvar");
 	private String[] novoDado = new String[9];
@@ -34,8 +27,7 @@ public class TelaDetalhePessoa implements ActionListener {
 	private int opcao;
 	private String s;
 
-	public void inserirEditar(int op, ControleDados d, 
-			TelaPessoa p, int pos) {
+	public void inserirEditar(int op, ControleDados d, TelaPessoa p, int pos) {
 
 		opcao = op;
 		posicao = pos;
@@ -51,65 +43,32 @@ public class TelaDetalhePessoa implements ActionListener {
 		//Preenche dados com dados do aluno clicado
 		if (op == 3) {
 			valorNome = new JTextField(dados.getAlunos()[pos].getNome(), 200);
-			valorEnd = new JTextField(dados.getAlunos()[pos].getEndereco(),200);
-			valorHoraAula = new JTextField(200);
-			valorCPF = new JTextField(String.valueOf(dados.getAlunos()[pos].getCPF()), 200);
-			valorID = new JTextField(String.valueOf(dados.getAlunos()[pos].getNumID()), 200);
-			valorDDD = new JTextField(String.valueOf(dados.getAlunos()[pos].getNumTel().getDDD()), 3);
-			valorTelefone = new JTextField(String.valueOf(dados.getAlunos()[pos].getNumTel().getNumero()), 10);			
+			valorSexo = new JTextField(dados.getAlunos()[pos].getNome(), 200);
+			valorDataNasc = new JTextField(dados.getAlunos()[pos].getNome(), 200);
+				
 
 		} else if (op == 4) { //Preenche dados com dados do professor clicado 
 			valorNome = new JTextField(dados.getProfessores()[pos].getNome(), 200);
-			valorHoraAula = new JTextField(String.valueOf(
-					dados.getProfessores()[pos].getValorHoraAula()),200);
-			valorEnd = new JTextField(200);
-			valorCPF = new JTextField(String.valueOf(dados.getProfessores()[pos].getCPF()), 200);
-			valorID = new JTextField(String.valueOf(dados.getProfessores()[pos].getNumID()), 200);
-			valorDDD = new JTextField(
-					String.valueOf(dados.getProfessores()[pos].getNumTel().getDDD()), 3);
-			valorTelefone = new JTextField(
-					String.valueOf(dados.getProfessores()[pos].getNumTel().getNumero()), 10);
+			valorSexo = new JTextField(dados.getAlunos()[pos].getNome(), 200);
+			valorDataNasc = new JTextField(dados.getAlunos()[pos].getNome(), 200);
+			
 
 		} else { //N�o preenche com dados
 
 			valorNome = new JTextField(200);
-			valorEnd = new JTextField(200);
-			valorHoraAula = new JTextField(200);
-			valorCPF = new JTextField(200);
-			valorID = new JTextField(200);
-			valorDDD = new JTextField(3);
-			valorTelefone = new JTextField(10);
+			valorSexo = new JTextField(200);
+			valorDataNasc = new JTextField(200);
+			
 
 			botaoSalvar.setBounds(245, 175, 115, 30);
 		}
 
 		labelNome.setBounds(30, 20, 150, 25);
 		valorNome.setBounds(180, 20, 180, 25);
-		labelEnd.setBounds(30, 50, 150, 25);
-		valorEnd.setBounds(180, 50, 180, 25);
-		labelHoraAula.setBounds(30, 50, 180, 25);
-		valorHoraAula.setBounds(180, 50, 180, 25);		
-		labelCPF.setBounds(30, 80, 150, 25);
-		valorCPF.setBounds(180, 80, 180, 25);
-		labelID.setBounds(30, 110, 150, 25);
-		valorID.setBounds(180, 110, 180, 25);
-		labelTelefone.setBounds(30, 140, 150, 25);
-		valorDDD.setBounds(180, 140, 28, 25);
-		valorTelefone.setBounds(210, 140, 65, 25);
-
-		//Coloca os campos relacionados a endereco se aluno
-		if (op == 1 || op == 3 ) {
-			this.janela.add(labelEnd);
-			this.janela.add(valorEnd);
-
-		}
-
-		//Coloca campos relacionados a valor hora/aula se professor
-		if (op == 2 || op == 4) {
-
-			this.janela.add(labelHoraAula);
-			this.janela.add(valorHoraAula);
-		}
+		labelSexo.setBounds(30, 50, 150, 25);
+		valorSexo.setBounds(180, 50, 180, 25);
+		labelDataNasc.setBounds(30, 50, 150, 25);
+		valorDataNasc.setBounds(180, 50, 180, 25);
 
 		//Coloca botoes de excluir e salvar
 		if (op == 3 || op == 4) {
@@ -120,13 +79,8 @@ public class TelaDetalhePessoa implements ActionListener {
 
 		this.janela.add(labelNome);
 		this.janela.add(valorNome);
-		this.janela.add(labelCPF);
-		this.janela.add(valorCPF);
-		this.janela.add(labelID);
-		this.janela.add(valorID);
-		this.janela.add(labelTelefone);
-		this.janela.add(valorDDD);
-		this.janela.add(valorTelefone);
+		this.janela.add(labelSexo);
+		this.janela.add(valorSexo);
 		this.janela.add(botaoSalvar);
 
 		this.janela.setLayout(null);
@@ -152,16 +106,14 @@ public class TelaDetalhePessoa implements ActionListener {
 					novoDado[0] = Integer.toString(posicao);
 
 				novoDado[1] =  valorNome.getText();
-				novoDado[3] =  valorCPF.getText();
-				novoDado[4] =  valorID.getText();
-				novoDado[5] =  valorDDD.getText();
-				novoDado[6] =  valorTelefone.getText();
+				novoDado[1] =  valorSexo.getText();
+				
 
 				if (opcao == 1 || opcao == 3) {
-					novoDado[2] =  valorEnd.getText();
+					novoDado[2] =  valorNome.getText();
 					res = dados.inserirEditarAluno(novoDado);
 				} else {
-					novoDado[2] =  valorHoraAula.getText();
+					novoDado[2] =  valorSexo.getText();
 					res = dados.inserirEditarProf(novoDado);
 				}
 
@@ -213,21 +165,19 @@ public class TelaDetalhePessoa implements ActionListener {
 		JOptionPane.showMessageDialog(null,"ERRO AO SALVAR OS DADOS!\n "
 				+ "Pode ter ocorrido um dos dois erros a seguir:  \n"
 				+ "1. Nem todos os campos foram preenchidos \n"
-				+ "2. CPF, identidade, DDD e telefone n�o cont�m apenas n�meros", null, 
+				+ "2. Sexo apenas M/F e Data somente numeros", null, 
 				JOptionPane.ERROR_MESSAGE);
 	}
 
 	public void mensagemErroExclusaoAluno() {
 		JOptionPane.showMessageDialog(null,"Ocorreu um erro ao excluir o dado.\n "
-				+ "Verifique se o aluno est� matriculado\n"
-				+ "em alguma disciplina. Se sim, cancele\n "
-				+ "a matricula e tente novamente.", null, 
+				+ "Verifique se o colocou os dados corretamente\n", null, 
 				JOptionPane.ERROR_MESSAGE);
 	}
 	
 	public void mensagemErroExclusaoProf() {
 		JOptionPane.showMessageDialog(null,"Ocorreu um erro ao excluir o dado.\n "
-				+ "Verifique se o professor est� respons�vel\n"
+				+ "Verifique se o sintoma foi especificado corretamente\n"
 				+ "por alguma disciplina. Se sim, substitua\n "
 				+ "o professor e tente novamente.", null, 
 				JOptionPane.ERROR_MESSAGE);

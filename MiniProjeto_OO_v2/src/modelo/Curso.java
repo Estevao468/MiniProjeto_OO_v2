@@ -11,7 +11,7 @@ public class Curso {
 	private int horaTermino;
 	private int cargaHoraria;
 	private String conteudoProg;
-	private Professor prof;
+	private Ciclo prof;
 	private double valor;
 	private Matricula[] alunosMatriculados = new Matricula[40];
 	private int numAlunos = 0;
@@ -21,7 +21,7 @@ public class Curso {
 	}
 	
 	public Curso(String n, Date di, Date dt, int hi, int ht, int ch, 
-			String cont, Professor p, double val, int total) {
+			String cont, Ciclo p, double val, int total) {
 		nome = n;
 		dtInicio = di;
 		dtTermino = dt;
@@ -107,11 +107,11 @@ public class Curso {
 		this.conteudoProg = conetudoProg;
 	}
 
-	public Professor getProf() {
+	public Ciclo getProf() {
 		return prof;
 	}
 
-	public void setProf(Professor prof) {
+	public void setProf(Ciclo prof) {
 		this.prof = prof;
 	}
 	
@@ -130,7 +130,7 @@ public class Curso {
 	
 	//Faz mais sentido na camada de controle
 	
-	public Aluno getAluno(int i) {
+	public Usuario getAluno(int i) {
 		return alunosMatriculados[i].getAluno();
 	}
 

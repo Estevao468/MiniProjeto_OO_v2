@@ -3,7 +3,7 @@ package controle;
 import modelo.*;
 
 public class ControleProfessor {
-	private Professor[] p;
+	private Ciclo[] p;
 	private int qtdProfs;
 
 	public ControleProfessor(ControleDados d) {
@@ -31,25 +31,8 @@ public class ControleProfessor {
 		return p[i].getNome();
 	}
 
-	public String getCPF(int i) {
-		String numCPF = String.valueOf(p[i].getCPF());
-		return numCPF;
-	}
-
-	public String getID(int i) {
-		String numID = String.valueOf(p[i].getNumID());
-		return numID;
-	}
-
-	public Telefone getNumTel(int i) {
-		return p[i].getNumTel();
-	}
-
 	public void setQtdAlunos(int qtdProfs) {
 		this.qtdProfs = qtdProfs;
 	}
 	
-	public double getValorHoraAula (int i) {
-		return p[i].getValorHoraAula();
-	}
 }

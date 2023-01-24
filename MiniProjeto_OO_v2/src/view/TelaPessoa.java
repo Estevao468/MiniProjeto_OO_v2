@@ -61,7 +61,7 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
 			janela = new JFrame("Professores");
 			titulo = new JLabel("Professores Cadastrados");
 			cadastroProf = new JButton("Cadastrar");
-			refreshProf = new JButton("Refresh");
+			refreshProf = new JButton("Cancelar");
 
 			titulo.setFont(new Font("Arial", Font.BOLD, 20));
 			titulo.setBounds(90, 10, 250, 30);

@@ -4,15 +4,15 @@ import java.util.Date;
 
 public class Matricula {
 	
-	private Aluno aluno;
+	private Usuario usuario;
 	private Date data;
 	private double valorPago;
 	private Curso curso;
 	private String turma;
 	
 	
-	public Matricula(Aluno a, Date d, double v, Curso c, String t) {
-		aluno = a; 
+	public Matricula(Usuario a, Date d, double v, Curso c, String t) {
+		usuario = a; 
 		data = d;
 		valorPago = v;
 		curso = c; 
@@ -30,13 +30,13 @@ public class Matricula {
 	}
 
 
-	public Aluno getAluno() {
-		return aluno;
+	public Usuario getAluno() {
+		return usuario;
 	}
 
 
-	public void setAluno(Aluno aluno) {
-		this.aluno = aluno;
+	public void setAluno(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 
@@ -81,7 +81,7 @@ public class Matricula {
 
 
 	public String toString() {
-		return "Matricula do aluno " + aluno + ", o valorPago foi de R$ " + valorPago + 
+		return "Matricula do aluno " + usuario + ", o valorPago foi de R$ " + valorPago + 
 				" referente ao curso " + curso.getNome();
 	}
 
