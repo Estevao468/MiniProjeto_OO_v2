@@ -1,6 +1,6 @@
 package modelo;
 
-public class Ciclo extends Pessoa {
+public class Ciclo extends Medicamentos {
 	
 	private int diaSemana;
 	private String mes;

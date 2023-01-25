@@ -41,10 +41,10 @@ public class TelaMenu implements ActionListener {
 		Object src = e.getSource();
 		
 		if(src == usuario)
-			new TelaPessoa().mostrarDados(dados, 1);
+			new TelaFuncoes().mostrarDados(dados, 1);
 		
 		if(src == ciclo)
-			new TelaPessoa().mostrarDados(dados, 2);
+			new TelaFuncoes().mostrarDados(dados, 2);
 		
 	}
 }

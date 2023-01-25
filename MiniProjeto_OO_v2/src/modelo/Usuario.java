@@ -2,7 +2,7 @@ package modelo;
 
 import java.util.*;
 
-public class Usuario extends Pessoa { 
+public class Usuario extends Medicamentos { 
 	private Date dataNasc;
 	private String sexo;
 	

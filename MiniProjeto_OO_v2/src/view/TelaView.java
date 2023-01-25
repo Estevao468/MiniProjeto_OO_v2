@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import controle.*;
 
-public class TelaDetalhePessoa implements ActionListener {
+public class TelaView implements ActionListener {
 
 	private JFrame janela;
 	private JLabel labelNome = new JLabel("Nome: ");
@@ -26,31 +26,30 @@ public class TelaDetalhePessoa implements ActionListener {
 	private int posicao;
 	private int opcao;
 	private String s;
-
-	public void inserirEditar(int op, ControleDados d, TelaPessoa p, int pos) {
+	public void inserirEditar(int op, ControleDados d, TelaFuncoes p, int pos) {
 
 		opcao = op;
 		posicao = pos;
 		dados = d;
 
-		if (op == 1) s = "Cadastro de Aluno";
-		if (op == 2) s = "Cadastro de Professor";
-		if (op == 3) s = "Detalhe de Aluno";
-		if (op == 4) s = "Detalhe de Professor";
+		if (op == 1) s = "Cadastro de Usuario";
+		if (op == 2) s = "Cadastro de Perído no Ciclo";
+		if (op == 3) s = "Detalhe de Usuario";
+		if (op == 4) s = "Detalhes do Ciclo";
 
 		janela = new JFrame(s);
 
 		//Preenche dados com dados do aluno clicado
 		if (op == 3) {
-			valorNome = new JTextField(dados.getAlunos()[pos].getNome(), 200);
-			valorSexo = new JTextField(dados.getAlunos()[pos].getNome(), 200);
-			valorDataNasc = new JTextField(dados.getAlunos()[pos].getNome(), 200);
+			valorNome = new JTextField(dados.getUsuario()[pos].getNome(), 200);
+			valorSexo = new JTextField(dados.getUsuario()[pos].getNome(), 200);
+			valorDataNasc = new JTextField(dados.getUsuario()[pos].getNome(), 200);
 				
 
 		} else if (op == 4) { //Preenche dados com dados do professor clicado 
-			valorNome = new JTextField(dados.getProfessores()[pos].getNome(), 200);
-			valorSexo = new JTextField(dados.getAlunos()[pos].getNome(), 200);
-			valorDataNasc = new JTextField(dados.getAlunos()[pos].getNome(), 200);
+			valorNome = new JTextField(dados.getCiclo()[pos].getNome(), 200);
+			valorSexo = new JTextField(dados.getCiclo()[pos].getNome(), 200);
+			valorDataNasc = new JTextField(dados.getCiclo()[pos].getNome(), 200);
 			
 
 		} else { //N�o preenche com dados
@@ -67,8 +66,8 @@ public class TelaDetalhePessoa implements ActionListener {
 		valorNome.setBounds(180, 20, 180, 25);
 		labelSexo.setBounds(30, 50, 150, 25);
 		valorSexo.setBounds(180, 50, 180, 25);
-		labelDataNasc.setBounds(30, 50, 150, 25);
-		valorDataNasc.setBounds(180, 50, 180, 25);
+		labelDataNasc.setBounds(30, 80, 150, 25);
+		valorDataNasc.setBounds(180, 80, 180, 25);
 
 		//Coloca botoes de excluir e salvar
 		if (op == 3 || op == 4) {
@@ -81,6 +80,8 @@ public class TelaDetalhePessoa implements ActionListener {
 		this.janela.add(valorNome);
 		this.janela.add(labelSexo);
 		this.janela.add(valorSexo);
+		this.janela.add(labelDataNasc);
+		this.janela.add(valorDataNasc);
 		this.janela.add(botaoSalvar);
 
 		this.janela.setLayout(null);
@@ -99,9 +100,9 @@ public class TelaDetalhePessoa implements ActionListener {
 			try {
 				boolean res;
 				if(opcao == 1) //cadastro de novo aluno
-					novoDado[0] = Integer.toString(dados.getQtdAlunos());
+					novoDado[0] = Integer.toString(dados.getQtdUsuario());
 				else if (opcao == 2) // cadastro de novo prof
-					novoDado[0] = Integer.toString(dados.getQtdProfs());
+					novoDado[0] = Integer.toString(dados.getQtdCiclo());
 				else // edicao de dado existente
 					novoDado[0] = Integer.toString(posicao);
 
@@ -182,5 +183,5 @@ public class TelaDetalhePessoa implements ActionListener {
 				+ "o professor e tente novamente.", null, 
 				JOptionPane.ERROR_MESSAGE);
 	}
-
-}
+		
+	}

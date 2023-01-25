@@ -6,7 +6,8 @@ import javax.swing.event.*;
 import controle.*;
 
 
-public class TelaPessoa implements ActionListener, ListSelectionListener {		
+public class TelaFuncoes implements ActionListener, ListSelectionListener {		
+	
 	private JFrame janela;
 	private JLabel titulo;
 	private JButton cadastroAluno;
@@ -17,18 +18,22 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
 	private JList<String> listaAlunosCadastrados;
 	private JList<String> listaProfsCadastrados;
 	private String[] listaNomes = new String[50];
-
+	private JLabel labelNome = new JLabel("Nome: ");
+	private JLabel labelSexo = new JLabel("Sexo: ");
+	private JLabel labelDataNasc = new JLabel("Data de Nacimento: ");
+	private JButton botaoExcluir = new JButton("Excluir");
+	private JButton botaoSalvar = new JButton("Salvar");
 	public void mostrarDados(ControleDados d, int op){
 		dados = d;
 
 		switch (op) {
 		case 1:// Mostrar dados de alunos cadastrados (JList)
-			listaNomes = new ControleAluno(dados).getNomeAluno();
+			listaNomes = new ControleUsuario(dados).getNomeUsuario();
 			listaAlunosCadastrados = new JList<String>(listaNomes);
-			janela = new JFrame("Alunos");
-			titulo = new JLabel("Alunos Cadastrados");
+			janela = new JFrame("Usuario");
+			titulo = new JLabel("Usuario Cadastrado");
 			cadastroAluno = new JButton("Cadastrar");
-			refreshAluno = new JButton("Refresh");
+			refreshAluno = new JButton("Cancelar");
 
 			titulo.setFont(new Font("Arial", Font.BOLD, 20));
 			titulo.setBounds(90, 10, 250, 30);
@@ -56,10 +61,10 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
 			break;
 
 		case 2:// Mostrar dados de professores cadastrados (JList)
-			listaNomes = new ControleProfessor(dados).getNomeProf();
+			listaNomes = new ContoleCiclo(dados).getNomeCiclo();
 			listaProfsCadastrados = new JList<String>(listaNomes);
-			janela = new JFrame("Professores");
-			titulo = new JLabel("Professores Cadastrados");
+			janela = new JFrame("Ciclo");
+			titulo = new JLabel("Ciclo Cadastrado");
 			cadastroProf = new JButton("Cadastrar");
 			refreshProf = new JButton("Cancelar");
 
@@ -80,7 +85,7 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
 			janela.add(cadastroProf);
 			janela.add(refreshProf);
 
-			janela.setSize(400, 250);
+			janela.setSize(900, 700);
 			janela.setVisible(true);
 
 			cadastroProf.addActionListener(this);
@@ -95,47 +100,25 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
 
 	}
 
-
-
-	//Captura eventos relacionados aos bot�es da interface
-	public void actionPerformed(ActionEvent e) {
-		Object src = e.getSource();
-		
-		//Cadastro de novo aluno
-		if(src == cadastroAluno)
-			new TelaDetalhePessoa().inserirEditar(1, dados, this, 0);
-
-		//Cadastro de novo professor
-		if(src == cadastroProf)
-			new TelaDetalhePessoa().inserirEditar(2, dados, this, 0);
-
-		// Atualiza a lista de nomes de alunos mostrada no JList
-		if(src == refreshAluno) {
-			listaAlunosCadastrados.setListData(new ControleAluno(dados).getNomeAluno());			
-			listaAlunosCadastrados.updateUI();
-		}
-
-		// Atualiza a lista de nomes de professores mostrada no JList
-		if(src == refreshProf) {
-			listaProfsCadastrados.setListData(new ControleProfessor(dados).getNomeProf());
-			listaProfsCadastrados.updateUI();
-		}
-
-	}
-
 	//Captura eventos relacionados ao JList
 	public void valueChanged(ListSelectionEvent e) {
 		Object src = e.getSource();
 
 		if(e.getValueIsAdjusting() && src == listaAlunosCadastrados) {
-			new TelaDetalhePessoa().inserirEditar(3, dados, this, 
+			new TelaView().inserirEditar(3, dados, this, 
 					listaAlunosCadastrados.getSelectedIndex());
 		}
 
 		if(e.getValueIsAdjusting() && src == listaProfsCadastrados) {
-			new TelaDetalhePessoa().inserirEditar(4, dados, this, 
+			new TelaView().inserirEditar(4, dados, this, 
 					listaProfsCadastrados.getSelectedIndex());
 		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Stub de método gerado automaticamente
+		
 	}
 
 }

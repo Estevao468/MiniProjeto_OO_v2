@@ -16,42 +16,42 @@ public class ControleDados {
 		this.d = d;
 	}
 
-	public Usuario[] getAlunos() {
-		return this.d.getAlunos();
+	public Usuario[] getUsuario() {
+		return this.d.getUsuario();
 	}
 	
-	public int getQtdAlunos() {
-		return this.d.getQtdAlunos();
+	public int getQtdUsuario() {
+		return this.d.getQtdUsuario();
 	}
 	
-	public int getQtdProfs() {
-		return this.d.getQtdProfs();
+	public int getQtdCiclo() {
+		return this.d.getQtdCiclo();
 	}
 	
-	public Ciclo[] getProfessores() {
-		return this.d.getProfs();
+	public Ciclo[] getCiclo() {
+		return this.d.getCiclo();
 	}
 	
 
 
-	public boolean inserirEditarProf(String[] dadosProfs) {
-		if(!dadosProfs[3].matches("[0-9]+") || !dadosProfs[4].matches("[0-9]+") || 
-				!dadosProfs[5].matches("[0-9]+") || !dadosProfs[6].matches("[0-9]+")) {
+	public boolean inserirEditarProf(String[] dadosCiclo) {
+		if(!dadosCiclo[3].matches("[0-9]+") || !dadosCiclo[4].matches("[0-9]+") || 
+				!dadosCiclo[5].matches("[0-9]+") || !dadosCiclo[6].matches("[0-9]+")) {
 			return false;
 		} else {
 				Ciclo p = new Ciclo();
-				d.inserirEditaProf(p, Integer.parseInt(dadosProfs[0]));
+				d.inserirEditaCiclo(p, Integer.parseInt(dadosCiclo[0]));
 				return true;
 		}
 	}
 	// a posicao 0 do vetor dadosAlunos indica onde os dados devem ser inseridos
-	public boolean inserirEditarAluno(String[] dadosAlunos) {
-		if(!dadosAlunos[3].matches("[0-9]+") || !dadosAlunos[4].matches("[0-9]+") || 
-				!dadosAlunos[5].matches("[0-9]+") || !dadosAlunos[6].matches("[0-9]+")) {
+	public boolean inserirEditarAluno(String[] dadosUsuario) {
+		if(!dadosUsuario[3].matches("[0-9]+") || !dadosUsuario[4].matches("[0-9]+") || 
+				!dadosUsuario[5].matches("[0-9]+") || !dadosUsuario[6].matches("[0-9]+")) {
 			return false;
 		} else {
 				Usuario a = new Usuario();
-				d.inserirEditarAluno(a, Integer.parseInt(dadosAlunos[0]));
+				d.inserirEditarUsuario(a, Integer.parseInt(dadosUsuario[0]));
 				return true;
 		}
 	}

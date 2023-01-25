@@ -1,81 +1,62 @@
 package modelo;
 
-import java.util.*;
-
 public class Dados {
 	private  Usuario[] usuarios = new Usuario[50];
-	private int qtdAlunos = 0;
-	private Curso [] cursos = new Curso[50];
-	private int qtdCursos = 0;
-	private Ciclo[] profs = new Ciclo[50];
-	private int qtdProfs = 0;
+	private int qtdUsuario = 0;
+	private Ciclo[] ciclo = new Ciclo[50];
+	private int qtdCiclo = 0;
 
 	
 	
 	public void fillWithSomeData() {
-		Date d = Calendar.getInstance().getTime();
+		
 		for(int i = 0; i < 5; i++) {
 			usuarios[i] = new Usuario();
-			profs[i] = new Ciclo();
-			cursos[i] = new Curso();			
+			ciclo[i] = new Ciclo();		
 		}
 		
-		qtdAlunos = 5;
-		qtdCursos = 5;
-		qtdProfs = 5;
+		qtdUsuario = 5;
+		qtdCiclo = 5;
 	}
 	
-	public Usuario[] getAlunos() {
+	public Usuario[] getUsuario() {
 		return usuarios;
 	}
 	
-	public void setAlunos(Usuario[] alunos) {
-		this.usuarios = alunos;
+	public void setUsuario(Usuario[] usuario) {
+		this.usuarios = usuario;
 	}
 	
-	public void inserirEditarAluno(Usuario a, int pos) {
-		this.usuarios[pos] = a;
-		if(pos == qtdAlunos) qtdAlunos++;
+	public void inserirEditarUsuario(Usuario u, int pos) {
+		this.usuarios[pos] = u;
+		if(pos == qtdUsuario) qtdUsuario++;
 	}
 	
-	public int getQtdAlunos() {
-		return qtdAlunos;
+	public int getQtdUsuario() {
+		return qtdUsuario;
 	}
-	public void setQtdAlunos(int qtdAlunos) {
-		this.qtdAlunos = qtdAlunos;
+	public void setQtdUsuario(int qtdUsuario) {
+		this.qtdUsuario = qtdUsuario;
 	}
-	public Curso[] getCursos() {
-		return cursos;
-	}
-	public void setCursos(Curso[] cursos) {
-		this.cursos = cursos;
-	}
-	public int getQtdCursos() {
-		return qtdCursos;
-	}
-	public void setQtdCursos(int qtdCursos) {
-		this.qtdCursos = qtdCursos;
+	public Ciclo[] getCiclo() {
+		return ciclo;
 	}
 	
-	public Ciclo[] getProfs() {
-		return profs;
+	public void setCiclo(Ciclo[] ciclo) {
+		this.ciclo = ciclo;
 	}
 	
-	public void setProfs(Ciclo[] profs) {
-		this.profs = profs;
-	}
-	
-	public void inserirEditaProf(Ciclo p, int pos) {
-		this.profs[pos] = p;
-		if(pos == qtdProfs) qtdProfs++;
+	public void inserirEditaCiclo(Ciclo c, int pos) {
+		this.ciclo[pos] = c;
+		if(pos == qtdCiclo) qtdCiclo++;
 	}
 	
 	
-	public int getQtdProfs() {
-		return qtdProfs;
+	public int getQtdCiclo() {
+		return qtdCiclo;
 	}
-	public void setQtdProfs(int qtdProfs) {
-		this.qtdProfs = qtdProfs;
+	public void setQtdCiclo(int qtdCiclo) {
+		this.qtdCiclo = qtdCiclo;
 	}
 	
 
