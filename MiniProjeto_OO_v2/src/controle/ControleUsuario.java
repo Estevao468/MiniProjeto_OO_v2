@@ -32,8 +32,8 @@ public class ControleUsuario {
 		return u[i].getNome();
 	}
 
-	public void setQtdAlunos(int qtdAlunos) {
-		this.qtdUsuario = qtdAlunos;
+	public void setQtdUsuario(int qtdUsuario) {
+		this.qtdUsuario = qtdUsuario;
 	}
 	
 }
