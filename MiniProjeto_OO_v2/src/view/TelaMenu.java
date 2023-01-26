@@ -10,31 +10,34 @@ public class TelaMenu implements ActionListener {
 	private static JFrame janela = new JFrame("Diario de Ciclo Menstrual");
 	private static JLabel titulo = new JLabel("Menu Principal");
 	private static JButton usuario = new JButton("Usuario");
-	private static JButton ciclo = new JButton("Ciclo");
+	private static JButton sintomas = new JButton("Ciclo");
 	public static ControleDados dados = new ControleDados();
 	
 	public TelaMenu() {
 		titulo.setFont(new Font("Arial", Font.BOLD, 20));
-		titulo.setBounds(370, 80, 150, 150);
-		ciclo.setBounds(590, 600, 100, 30);
-		usuario.setBounds(150, 600, 100, 30);
+		titulo.setBounds(180, 80, 150, 150);
+		sintomas.setBounds(280, 300, 100, 30);
+		usuario.setBounds(100, 300, 100, 30);
 		
 		janela.setLayout(null);
+		janela.add(BorderLayout.CENTER, titulo);
+		janela.add(BorderLayout.WEST, usuario);
+		janela.add(BorderLayout.EAST, sintomas);
 		
 		janela.add(titulo);
 		janela.add(usuario);
-		janela.add(ciclo);
+		janela.add(sintomas);
 		
-		janela.setSize(900, 700);
-		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		janela.setSize(500, 400);
 		janela.setVisible(true);
+		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-	
+
 	public static void main(String[] args) {
 		TelaMenu menu = new TelaMenu();
 		
 		usuario.addActionListener(menu);
-		ciclo.addActionListener(menu);
+		sintomas.addActionListener(menu);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -43,7 +46,7 @@ public class TelaMenu implements ActionListener {
 		if(src == usuario)
 			new TelaFuncoes().mostrarDados(dados, 1);
 		
-		if(src == ciclo)
+		if(src == sintomas)
 			new TelaFuncoes().mostrarDados(dados, 2);
 		
 	}

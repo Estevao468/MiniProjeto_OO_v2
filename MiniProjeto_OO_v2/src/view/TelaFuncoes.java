@@ -3,10 +3,12 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
-import controle.*;
+import controle.ControleDados;
+import controle.ControleUsuario;
+import controle.ControleCiclo;
 
 
-public class TelaFuncoes implements ActionListener, ListSelectionListener {		
+public class TelaFuncoes implements ListSelectionListener {		
 	
 	private JFrame janela;
 	private JLabel titulo;
@@ -27,7 +29,7 @@ public class TelaFuncoes implements ActionListener, ListSelectionListener {
 		dados = d;
 
 		switch (op) {
-		case 1:// Mostrar dados de alunos cadastrados (JList)
+		case 1:
 			listaNomes = new ControleUsuario(dados).getNomeUsuario();
 			listaAlunosCadastrados = new JList<String>(listaNomes);
 			janela = new JFrame("Usuario");
@@ -36,8 +38,8 @@ public class TelaFuncoes implements ActionListener, ListSelectionListener {
 			refreshAluno = new JButton("Cancelar");
 
 			titulo.setFont(new Font("Arial", Font.BOLD, 20));
-			titulo.setBounds(90, 10, 250, 30);
-			listaAlunosCadastrados.setBounds(20, 50, 350, 120);
+			titulo.setBounds(150, 10, 250, 30);
+			listaAlunosCadastrados.setBounds(20, 50, 400, 90);
 			listaAlunosCadastrados.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 			listaAlunosCadastrados.setVisibleRowCount(10);
 
@@ -51,17 +53,15 @@ public class TelaFuncoes implements ActionListener, ListSelectionListener {
 			janela.add(cadastroAluno);
 			janela.add(refreshAluno);
 
-			janela.setSize(900, 700);
+			janela.setSize(500, 400);
 			janela.setVisible(true);
 
-			cadastroAluno.addActionListener(this);
-			refreshAluno.addActionListener(this);
 			listaAlunosCadastrados.addListSelectionListener(this);
 
 			break;
 
-		case 2:// Mostrar dados de professores cadastrados (JList)
-			listaNomes = new ContoleCiclo(dados).getNomeCiclo();
+		case 2:
+			listaNomes = new ControleCiclo(dados).getNomeCiclo();
 			listaProfsCadastrados = new JList<String>(listaNomes);
 			janela = new JFrame("Ciclo");
 			titulo = new JLabel("Ciclo Cadastrado");
@@ -70,7 +70,7 @@ public class TelaFuncoes implements ActionListener, ListSelectionListener {
 
 			titulo.setFont(new Font("Arial", Font.BOLD, 20));
 			titulo.setBounds(90, 10, 250, 30);
-			listaProfsCadastrados.setBounds(20, 50, 350, 120);
+			listaProfsCadastrados.setBounds(20, 50, 400, 30);
 			listaProfsCadastrados.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 			listaProfsCadastrados.setVisibleRowCount(10);
 
@@ -85,11 +85,9 @@ public class TelaFuncoes implements ActionListener, ListSelectionListener {
 			janela.add(cadastroProf);
 			janela.add(refreshProf);
 
-			janela.setSize(900, 700);
+			janela.setSize(500, 400);
 			janela.setVisible(true);
 
-			cadastroProf.addActionListener(this);
-			refreshProf.addActionListener(this);
 			listaProfsCadastrados.addListSelectionListener(this);
 			break;
 
@@ -99,6 +97,32 @@ public class TelaFuncoes implements ActionListener, ListSelectionListener {
 		}
 
 	}
+	//Captura eventos relacionados aos botões da interface
+		public void actionPerformed1(ActionEvent e) {
+			Object src = e.getSource();
+			
+			//Cadastro de novo aluno
+			if(src == cadastroAluno)
+				new TelaView().inserirEditar(1, dados, this, 0);
+
+			//Cadastro de novo professor
+			if(src == cadastroProf)
+				new TelaView().inserirEditar(2, dados, this, 0);
+
+			// Atualiza a lista de nomes de alunos mostrada no JList
+			if(src == refreshAluno) {
+				listaAlunosCadastrados.setListData(new ControleUsuario(dados).getNomeUsuario());			
+				listaAlunosCadastrados.updateUI();
+			}
+
+			// Atualiza a lista de nomes de professores mostrada no JList
+			if(src == refreshProf) {
+				listaProfsCadastrados.setListData(new ControleCiclo(dados).getNomeCiclo());
+				listaProfsCadastrados.updateUI();
+			}
+
+		}
+
 
 	//Captura eventos relacionados ao JList
 	public void valueChanged(ListSelectionEvent e) {
@@ -114,11 +138,4 @@ public class TelaFuncoes implements ActionListener, ListSelectionListener {
 					listaProfsCadastrados.getSelectedIndex());
 		}
 	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Stub de método gerado automaticamente
-		
-	}
-
 }

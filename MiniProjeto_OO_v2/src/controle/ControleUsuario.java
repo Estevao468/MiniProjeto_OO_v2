@@ -12,12 +12,12 @@ public class ControleUsuario {
 	}
 	
 	public String[] getNomeUsuario() {
-		String[] s = new String[qtdUsuario];
+		String[] r = new String[qtdUsuario];
 		for(int i = 0; i < qtdUsuario; i++) {
-			s[i] = u[i].getNome();
+			r[i] = u[i].getNomeUsuario();
 		}
 		
-		return s;
+		return r;
 	}
 	
 	public int getQtd() {
@@ -28,8 +28,8 @@ public class ControleUsuario {
 		this.qtdUsuario = qtd;
 	}
 	
-	public String getNome(int i) {		
-		return u[i].getNome();
+	public String getNomeUsuario(int i) {		
+		return u[i].getNomeUsuario();
 	}
 
 	public void setQtdUsuario(int qtdUsuario) {

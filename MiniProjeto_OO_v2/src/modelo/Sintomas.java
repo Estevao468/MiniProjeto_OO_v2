@@ -11,10 +11,10 @@ public class Sintomas {
 		this.mes = mes;
 		
 	}
-	public String getNome() {
+	public String getNomeSintomas() {
 		return nome;
 	}
-	public void setNome(String nome) {
+	public void setNomeSintomas(String nome) {
 		this.nome = nome;
 	}
 	public String getDia() {

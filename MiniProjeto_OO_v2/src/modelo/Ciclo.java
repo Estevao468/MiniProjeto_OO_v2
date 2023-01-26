@@ -21,11 +21,11 @@ public class Ciclo extends Medicamentos {
 	}
 
 
-	public String getNome() {
+	public String getNomeCiclo() {
 		return nome;
 	}
 
-	public void setNome(String nome) {
+	public void setNomeCiclo(String nome) {
 		this.nome = nome;
 	}
 
@@ -44,5 +44,6 @@ public class Ciclo extends Medicamentos {
 	public void setMes(String mes) {
 		this.mes = mes;
 	}
+
 	
 }

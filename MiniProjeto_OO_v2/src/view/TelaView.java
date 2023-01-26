@@ -26,7 +26,7 @@ public class TelaView implements ActionListener {
 	private int posicao;
 	private int opcao;
 	private String s;
-	public void inserirEditar(int op, ControleDados d, TelaFuncoes p, int pos) {
+	public void inserirEditar(int op, ControleDados d, TelaFuncoes f, int pos) {
 
 		opcao = op;
 		posicao = pos;
@@ -41,15 +41,15 @@ public class TelaView implements ActionListener {
 
 		//Preenche dados com dados do aluno clicado
 		if (op == 3) {
-			valorNome = new JTextField(dados.getUsuario()[pos].getNome(), 200);
-			valorSexo = new JTextField(dados.getUsuario()[pos].getNome(), 200);
-			valorDataNasc = new JTextField(dados.getUsuario()[pos].getNome(), 200);
+			valorNome = new JTextField(dados.getUsuario()[pos].getNomeUsuario(), 200);
+			valorSexo = new JTextField(dados.getUsuario()[pos].getNomeUsuario(), 200);
+			valorDataNasc = new JTextField(dados.getUsuario()[pos].getNomeUsuario(), 200);
 				
 
 		} else if (op == 4) { //Preenche dados com dados do professor clicado 
-			valorNome = new JTextField(dados.getCiclo()[pos].getNome(), 200);
-			valorSexo = new JTextField(dados.getCiclo()[pos].getNome(), 200);
-			valorDataNasc = new JTextField(dados.getCiclo()[pos].getNome(), 200);
+			valorNome = new JTextField(dados.getCiclo()[pos].getNomeCiclo(), 200);
+			valorSexo = new JTextField(dados.getCiclo()[pos].getNomeCiclo(), 200);
+			valorDataNasc = new JTextField(dados.getCiclo()[pos].getNomeCiclo(), 200);
 			
 
 		} else { //N�o preenche com dados
@@ -86,8 +86,8 @@ public class TelaView implements ActionListener {
 
 		this.janela.setLayout(null);
 
-		janela.setSize(900, 700);
-		this.janela.setVisible(true);
+		janela.setSize(500, 400);
+		janela.setVisible(true);
 
 		botaoSalvar.addActionListener(this);
 		botaoExcluir.addActionListener(this);
@@ -108,14 +108,15 @@ public class TelaView implements ActionListener {
 
 				novoDado[1] =  valorNome.getText();
 				novoDado[1] =  valorSexo.getText();
+				novoDado[1] =  valorDataNasc.getText();
 				
 
 				if (opcao == 1 || opcao == 3) {
 					novoDado[2] =  valorNome.getText();
-					res = dados.inserirEditarAluno(novoDado);
+					res = dados.inserirEditarUsuario(novoDado);
 				} else {
 					novoDado[2] =  valorSexo.getText();
-					res = dados.inserirEditarProf(novoDado);
+					res = dados.inserirEditarSintomas(novoDado);
 				}
 
 				if(res) {
@@ -134,13 +135,13 @@ public class TelaView implements ActionListener {
 			boolean res = false;
 
 			if (opcao == 3) {//exclui aluno
-				res = dados.removerAluno(posicao);
+				res = dados.removerUsuario(posicao);
 				if (res) mensagemSucessoExclusao(); 
 				else mensagemErroExclusaoAluno(); 
 			}
 				
 			if (opcao == 4){ //exclui professor
-				res = dados.removerProfessor(posicao);
+				res = dados.removerSintoma(posicao);
 				if (res) mensagemSucessoExclusao(); 
 				else mensagemErroExclusaoProf(); 
 			}
