@@ -3,17 +3,16 @@ package modelo;
 /**
  * Classe responsável pelo objeto usuario
  * @author Rhumenigue e Estevao
- * @param <Medicamento>
  * @since 2023
  * 
  */
-public class Usuario<Medicamento> {
+public class Usuario {
 	private String datadeNascimento;
 	private String nome;
 	private String email;
-	private Medicamento medicamento;
-	private Liquido liquido;
-	private Comprimido comprimido;
+	private Medicamentos medicamento;
+	private String liquido;
+	private String comprimido;
 	private String sintomas;
 	private String ciclo;
 	
@@ -29,25 +28,16 @@ public class Usuario<Medicamento> {
 	 * @param ciclo
 	 * 
 	 */
-	public Usuario(String nome, String datadeNascimento, String email, Liquido liquido, String ciclo, String sintomas) {
+	public Usuario(String nome, String datadeNascimento, String email, String liquido, String comprimido, String ciclo, String sintomas) {
 		this.nome = nome;
 		this.datadeNascimento = datadeNascimento;
 		this.email = email;
 		this.liquido = liquido;
-		this.ciclo = ciclo;
-		this.sintomas = sintomas;
-	}
-	
-	public Usuario() {
-		this.nome = nome;
-		this.datadeNascimento = datadeNascimento;
-		this.email = email;
 		this.comprimido = comprimido;
 		this.ciclo = ciclo;
 		this.sintomas = sintomas;
 	}
 
-	
 	public String getDatadeNascimento() {
 		return datadeNascimento;
 	}
@@ -56,10 +46,10 @@ public class Usuario<Medicamento> {
 	}
 	
 	
-	public String getNomeUsuario() {
+	public String getNome() {
 		return nome;
 	}
-	public void setNomeUsuario(String nome) {
+	public void setNome(String nome) {
 		this.nome = nome;
 	}
 	
@@ -72,22 +62,22 @@ public class Usuario<Medicamento> {
 	}
 	
 	
-	public Medicamento getMedicamento() {
+	public Medicamentos getMedicamento() {
 		return medicamento;
 	}
-	public void setMedicamento(Medicamento medicamento) {
+	public void setMedicamento(Medicamentos medicamento) {
 		this.medicamento = medicamento;
 	}
-	public Liquido getLiquidos() {
+	public String getLiquidos() {
 		return liquido;
 	}
-	public void setLiquidos(Liquido liquido) {
+	public void setLiquidos(String liquido) {
 		this.liquido = liquido;
 	}
-	public Comprimido getComprimidos() {
+	public String getComprimidos() {
 		return comprimido;
 	}
-	public void setComprimidos(Comprimido comprimido) {
+	public void setComprimidos(String comprimido) {
 		this.comprimido = comprimido;
 	}
 	
@@ -105,11 +95,14 @@ public class Usuario<Medicamento> {
 		this.sintomas = sintomas;
 	}
 
-	public String getNomeSintomas() {
-		return nome;
-	}
-	public void setNomeSintomas(String nome) {
-		this.nome = nome;
+
+	@Override
+	public String toString() {
+		return "Nome: " + nome + "\n" +
+				"Data de Nascimento: " + datadeNascimento + "\n" + 
+				"Email: " + email + "\n" + 
+				"Medicamento " + medicamento.toString() + "\n";
 	}
 	
+
 }

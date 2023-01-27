@@ -14,7 +14,7 @@ public class ControleUsuario {
 	public String[] getNomeUsuario() {
 		String[] r = new String[qtdUsuario];
 		for(int i = 0; i < qtdUsuario; i++) {
-			r[i] = u[i].getNomeUsuario();
+			r[i] = u[i].getNome();
 		}
 		
 		return r;
@@ -29,7 +29,7 @@ public class ControleUsuario {
 	}
 	
 	public String getNomeUsuario(int i) {		
-		return u[i].getNomeUsuario();
+		return u[i].getNome();
 	}
 
 	public void setQtdUsuario(int qtdUsuario) {

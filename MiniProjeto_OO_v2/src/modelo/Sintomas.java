@@ -1,40 +1,45 @@
 package modelo;
 
+/**
+ * Classe responsável pelos sintomas
+ * @author Rhumenigue e Estevão 
+ * @since 2023
+ */
 public class Sintomas {
-	private String nome;
-	private String diaSemana;
-	private String mes;
+	private String diadaSemana;
+	private String detalhedoSintoma;
 	
-	public Sintomas(String nome, String diaSemana, String mes) {
-		this.nome = nome;
-		this.diaSemana = diaSemana;
-		this.mes = mes;
-		
+	/**
+	 * Construtor da classe Sintomas
+	 * @param diadaSemana
+	 * @param detalhedoSintoma
+	 */
+	public Sintomas(String diadaSemana, String detalhedoSintoma) {
+		this.diadaSemana = diadaSemana;
+		this.detalhedoSintoma = detalhedoSintoma;
 	}
-	public String getNomeSintomas() {
-		return nome;
+	
+	
+	public String getDiadaSemana() {
+		return diadaSemana;
 	}
-	public void setNomeSintomas(String nome) {
-		this.nome = nome;
+	public void setDiadaSemana(String diadaSemana) {
+		this.diadaSemana = diadaSemana;
 	}
-	public String getDia() {
-		return diaSemana;
+	public String getDetalhedoSintoma() {
+		return detalhedoSintoma;
 	}
-	public void setDia(String diaSemana) {
-		this.diaSemana = diaSemana;
-	} 
-	public String getMes() {
-		return mes;
+	public void setDetalhedoSintoma(String detalhedoSintoma) {
+		this.detalhedoSintoma = detalhedoSintoma;
 	}
-	public void setMes(String mes) {
-		this.mes = mes;
-	}
+	
+
 	@Override
 	public String toString() {
-		return "Nome do sintoma: " + nome + "\n" +
-	           "Dia do inicio do sintoma: " + diaSemana + "\n" + 
-		       "Mês do inicio do sintoma: " + mes;
+		return "\n" + "Sintomas"+ "\n" + 
+				"Dia da Semana: " + this.diadaSemana + "\n" + 
+				"Detalhe do Sintomas: " + this.detalhedoSintoma + "\n";
+	}
 
-    }
-	
+
 }

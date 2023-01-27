@@ -1,49 +1,49 @@
 package modelo;
 
-public class Ciclo extends Medicamentos {
+/**
+ * Classe responsável pelos sintomas
+ * @author Rhumenigue e Estevão 
+ * @since 2023
+ */
+public class Ciclo {
+	private String diadaSemana;
+	private String detalhedoCiclo;
 	
-	private int diaSemana;
-	private String mes;
-
-	public Ciclo(){
-		super();
+	/**
+	 * Construtor da classe Sintomas
+	 * @param diadaSemana
+	 * @param detalhedoCiclo
+	 */
+	public Ciclo(String diadaSemana, String detalhedoCiclo) {
+		this.diadaSemana = diadaSemana;
+		this.detalhedoCiclo = detalhedoCiclo;
 	}
 	
-	public Ciclo(String n, int a, String m) {
-		this.nome = n;
-		this.diaSemana = a;
-		this.mes = m;
-				
+	
+	public Ciclo(int parseInt, String detalhedoCiclo2) {
+		// TODO Stub de construtor gerado automaticamente
+	}
+
+
+	public String getDiadaSemana() {
+		return diadaSemana;
+	}
+	public void setDiadaSemana(String diadaSemana) {
+		this.diadaSemana = diadaSemana;
+	}
+	public String getDetalhedoCiclo() {
+		return detalhedoCiclo;
+	}
+	public void setDetalhedoCiclo(String detalhedoCiclo) {
+		this.detalhedoCiclo = detalhedoCiclo;
 	}
 	
-		public String toString() {
-		return "Nome d@ sintoma@: " + nome + ", Dia da Semana: " + diaSemana+ ", Mês de ocorrencia: "+mes;
+
+	@Override
+	public String toString() {
+		return "\n" + "Ciclo"+ "\n" + 
+				"Dia da Semana: " + this.diadaSemana + "\n" + 
+				"Detalhe do Ciclo: " + this.detalhedoCiclo + "\n";
 	}
-
-
-	public String getNomeCiclo() {
-		return nome;
-	}
-
-	public void setNomeCiclo(String nome) {
-		this.nome = nome;
-	}
-
-	public double getDiaSemana() {
-		return diaSemana;
-	}
-
-	public void setDiaSemana(int diaSemana) {
-		this.diaSemana = diaSemana;
-	}
-
-	public String getMes() {
-		return mes;
-	}
-
-	public void setMes(String mes) {
-		this.mes = mes;
-	}
-
 	
 }

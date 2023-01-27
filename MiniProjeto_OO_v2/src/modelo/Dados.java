@@ -1,6 +1,7 @@
 package modelo;
 
 public class Dados {
+	
 	private  Usuario[] usuarios = new Usuario[50];
 	private int qtdUsuario = 0;
 	private Ciclo[] ciclo = new Ciclo[50];
@@ -14,8 +15,8 @@ public class Dados {
 		
 		for(int i = 0; i < 5; i++) {
 			for(int i1 = 0; i1 < 5; i1++) {
-				usuarios[i1] = new Usuario("Usuario"+i1, "Sexo"+i1, null, null, null, null);
-				sintomas[i1] = new Sintomas("Sintomas"+i1, null, null);			
+				usuarios[i1] = new Usuario(null, null, null, null, null, null, null);
+				sintomas[i1] = new Sintomas(null, null);			
 			}	
 		}
 		
@@ -81,6 +82,47 @@ public class Dados {
 	}
 	public void setQtdSintomas(int qtdSintomas) {
 		this.qtdSintomas = qtdSintomas;
+	}
+
+	public Comprimido[] getComprimidos() {
+		// TODO Stub de método gerado automaticamente
+		return null;
+	}
+
+	public int getQtdComprimidos() {
+		// TODO Stub de método gerado automaticamente
+		return 0;
+	}
+
+	public Liquido[] getLiquidos() {
+		// TODO Stub de método gerado automaticamente
+		return null;
+	}
+
+	public int getQtdLiquidos() {
+		// TODO Stub de método gerado automaticamente
+		return 0;
+	}
+
+	public void inserirEditarSintoma(Sintomas l, int par) {
+		this.sintomas[par] = l;
+		if(par == qtdSintomas) qtdSintomas++;
+		
+	}
+
+	public void inserirEditarSintomaUsuario(Usuario u, int qtdLiquidos) {
+		// TODO Stub de método gerado automaticamente
+		
+	}
+
+	public void PreencherDados() {
+		// TODO Stub de método gerado automaticamente
+		
+	}
+
+	public void PreencherDadosGerais() {
+		// TODO Stub de método gerado automaticamente
+		
 	}
 	
 

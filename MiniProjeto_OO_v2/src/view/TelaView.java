@@ -26,7 +26,7 @@ public class TelaView implements ActionListener {
 	private int posicao;
 	private int opcao;
 	private String s;
-	public void inserirEditar(int op, ControleDados d, TelaFuncoes f, int pos) {
+	public void inserirEditar(int op, ControleDados d, TelaListaUsuarios f, int pos) {
 
 		opcao = op;
 		posicao = pos;
@@ -41,15 +41,15 @@ public class TelaView implements ActionListener {
 
 		//Preenche dados com dados do aluno clicado
 		if (op == 3) {
-			valorNome = new JTextField(dados.getUsuario()[pos].getNomeUsuario(), 200);
-			valorSexo = new JTextField(dados.getUsuario()[pos].getNomeUsuario(), 200);
-			valorDataNasc = new JTextField(dados.getUsuario()[pos].getNomeUsuario(), 200);
+			valorNome = new JTextField(dados.getUsuario()[pos].getNome(), 200);
+			valorSexo = new JTextField(dados.getUsuario()[pos].getNome(), 200);
+			valorDataNasc = new JTextField(dados.getUsuario()[pos].getNome(), 200);
 				
 
 		} else if (op == 4) { //Preenche dados com dados do professor clicado 
-			valorNome = new JTextField(dados.getCiclo()[pos].getNomeCiclo(), 200);
-			valorSexo = new JTextField(dados.getCiclo()[pos].getNomeCiclo(), 200);
-			valorDataNasc = new JTextField(dados.getCiclo()[pos].getNomeCiclo(), 200);
+			valorNome = new JTextField(dados.getCiclo()[pos].getDetalhedoCiclo(), 200);
+			valorSexo = new JTextField(dados.getCiclo()[pos].getDetalhedoCiclo(), 200);
+			valorDataNasc = new JTextField(dados.getCiclo()[pos].getDetalhedoCiclo(), 200);
 			
 
 		} else { //N�o preenche com dados
@@ -113,10 +113,10 @@ public class TelaView implements ActionListener {
 
 				if (opcao == 1 || opcao == 3) {
 					novoDado[2] =  valorNome.getText();
-					res = dados.inserirEditarUsuario(novoDado);
+					res = dados.inserirEditarSintoma(novoDado);
 				} else {
 					novoDado[2] =  valorSexo.getText();
-					res = dados.inserirEditarSintomas(novoDado);
+					res = dados.inserirEditarSintoma(novoDado);
 				}
 
 				if(res) {
@@ -135,15 +135,15 @@ public class TelaView implements ActionListener {
 			boolean res = false;
 
 			if (opcao == 3) {//exclui aluno
-				res = dados.removerUsuario(posicao);
+				res = dados.deletarUsuario(posicao);
 				if (res) mensagemSucessoExclusao(); 
-				else mensagemErroExclusaoAluno(); 
+				else mensagemErroExclusaoUsuario(); 
 			}
 				
 			if (opcao == 4){ //exclui professor
-				res = dados.removerSintoma(posicao);
+				res = dados.deletarSintoma(posicao);
 				if (res) mensagemSucessoExclusao(); 
-				else mensagemErroExclusaoProf(); 
+				else mensagemErroExclusaoSintoma(); 
 			}
 
 
@@ -171,13 +171,13 @@ public class TelaView implements ActionListener {
 				JOptionPane.ERROR_MESSAGE);
 	}
 
-	public void mensagemErroExclusaoAluno() {
+	public void mensagemErroExclusaoUsuario() {
 		JOptionPane.showMessageDialog(null,"Ocorreu um erro ao excluir o dado.\n "
 				+ "Verifique se o colocou os dados corretamente\n", null, 
 				JOptionPane.ERROR_MESSAGE);
 	}
 	
-	public void mensagemErroExclusaoProf() {
+	public void mensagemErroExclusaoSintoma() {
 		JOptionPane.showMessageDialog(null,"Ocorreu um erro ao excluir o dado.\n "
 				+ "Verifique se o sintoma foi especificado corretamente\n"
 				+ "por alguma disciplina. Se sim, substitua\n "

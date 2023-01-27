@@ -2,11 +2,11 @@ package controle;
 import modelo.*;
 
 public class ControleCiclo {
-	private Ciclo[] f;
+	private Ciclo[] c;
 	private int qtdCiclo;
 	
 	public ControleCiclo(ControleDados d) {
-		f = d.getCiclo();
+		c = d.getCiclo();
 		qtdCiclo = d.getQtdCiclo();
 		
 	}
@@ -14,7 +14,7 @@ public class ControleCiclo {
 	public String[] getNomeCiclo() {
 		String[] l = new String[qtdCiclo];
 		for(int i = 0; i < qtdCiclo; i++) {
-			l[i] = f[i].getNomeCiclo();
+			l[i] = c[i].getDetalhedoCiclo();
 		}
 		
 		return l;
@@ -28,8 +28,8 @@ public class ControleCiclo {
 		this.qtdCiclo = qtd;
 	}
 	
-	public String getNomeCiclo(int i) {		
-		return f[i].getNomeCiclo();
+	public String getDetalhedoCiclo(int i) {		
+		return c[i].getDetalhedoCiclo();
 	}
 
 	public void setQtdCiclo(int qtdCiclo) {
