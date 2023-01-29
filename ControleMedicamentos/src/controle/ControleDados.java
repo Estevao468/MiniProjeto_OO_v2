@@ -1,6 +1,6 @@
 package controle;
 
-import objetos.*;
+import modelo.*;
 import testeJUnit.*;
 
 /**

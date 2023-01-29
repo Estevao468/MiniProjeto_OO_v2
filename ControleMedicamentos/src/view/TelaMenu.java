@@ -5,7 +5,7 @@ import java.util.*;
 import java.awt.event.*;
 import javax.swing.*;
 import controle.*;
-import objetos.*;
+import modelo.*;
 
 /**
  * Classe referente a criação da tela principal do sistema 
@@ -17,7 +17,7 @@ public class TelaMenu implements ActionListener {
 	
 	private static JFrame janela = new JFrame("Diario de Ciclo Menstrual");
 	private static JLabel titulo = new JLabel("Menu");
-	private static JButton diario = new JButton("Medicamentos");
+	private static JButton diario = new JButton("Diario");
 	public static ControleDados dados = new ControleDados();
 	
 	/**
@@ -26,8 +26,8 @@ public class TelaMenu implements ActionListener {
 	 */
 	public TelaMenu() { // layout do menu principal
 		titulo.setFont(new Font("Arial", Font.BOLD, 30));
-		titulo.setBounds(285, 10, 600, 30);
-		diario.setBounds(355, 70, 140, 100);
+		titulo.setBounds(280, 80, 600, 30);
+		diario.setBounds(250, 250, 140, 50);
 		
 		janela.setLayout(null);
 		
@@ -35,7 +35,7 @@ public class TelaMenu implements ActionListener {
 		janela.add(diario);
 		
 		
-		janela.setSize(700, 500);
+		janela.setSize(670, 500);
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		janela.setVisible(true);
 	}
@@ -65,6 +65,10 @@ public class TelaMenu implements ActionListener {
 			new TelaEscolhaDiario();
 			
 		}	// chama a tela de escolha do tipo de medicamentos
+	}
+	public void mostrarDados(ControleDados dados2, int i) {
+		// TODO Stub de método gerado automaticamente
+		
 	}
 		
 }

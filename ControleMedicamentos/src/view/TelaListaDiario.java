@@ -19,12 +19,13 @@ public class TelaListaDiario implements ActionListener, ListSelectionListener {
     private JButton refreshCiclo;
     private JButton cadastroSintoma;
     private JButton refreshSintoma;
+    private JButton voltar;
 	private static ControleDados dados;
 	private JList<String> listaCicloCadastrados;
 	private JList<String> listaSintomaCadastrados;
     private int opcao;
-	private String[] listaNomesCiclo = new String[50];
-    private String[] listaNomesSintoma = new String[50];
+	private String[] listaNomeCiclo = new String[50];
+    private String[] listaNomeSintoma = new String[50];
     
     /**
      * Método para listagem de todos medicamentos cadastrados no sistema
@@ -38,21 +39,23 @@ public class TelaListaDiario implements ActionListener, ListSelectionListener {
 
 		switch (op) {
 		case 1: //mostrar lista de comprimidos cadastrados
-            listaNomesCiclo = new ControleCiclo(dados).getNomeCiclo(); // chamando nomes de comprimidos cadastrados da controle
-            listaCicloCadastrados = new JList<String>(listaNomesCiclo);// criando a lista de nomes de comprimidos cadastrados
-            janela = new JFrame("Controle de Medicamento");
-            titulo = new JLabel("Comprimidos Cadastrados");
+            listaNomeCiclo = new ControleCiclo(dados).getNomeCiclo(); // chamando nomes de comprimidos cadastrados da controle
+            listaCicloCadastrados = new JList<String>(listaNomeCiclo);// criando a lista de nomes de comprimidos cadastrados
+            janela = new JFrame("Controle Ciclo");
+            titulo = new JLabel("Ciclo Cadastrados");
             cadastroCiclo = new JButton("Cadastrar");
             refreshCiclo = new JButton("Atualizar");
+            voltar = new JButton("Voltar");
             
             titulo.setFont(new Font("Arial", Font.BOLD, 20));
-            titulo.setBounds(230, 10, 600, 30);
-            listaCicloCadastrados.setBounds(150, 50, 350, 120);
+            titulo.setBounds(160, 40, 500, 30);
+            listaCicloCadastrados.setBounds(100, 100, 280, 230);
             listaCicloCadastrados.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
             listaCicloCadastrados.setVisibleRowCount(10);
             
-            cadastroCiclo.setBounds(200, 175, 110, 30);
-            refreshCiclo.setBounds(340, 175, 110, 30);
+            cadastroCiclo.setBounds(400, 300, 120, 30);
+            refreshCiclo.setBounds(400, 250, 120, 30);
+            voltar.setBounds(20, 20, 70, 30);
             
             janela.setLayout(null);
 
@@ -60,32 +63,36 @@ public class TelaListaDiario implements ActionListener, ListSelectionListener {
             janela.add(listaCicloCadastrados);
             janela.add(cadastroCiclo);
             janela.add(refreshCiclo);
+            janela.add(voltar);
 
-            janela.setSize(700, 500);
+            janela.setSize(670, 500);
             janela.setVisible(true);
 
             cadastroCiclo.addActionListener(this);
             refreshCiclo.addActionListener(this);
+            voltar.addActionListener(this);
             listaCicloCadastrados.addListSelectionListener(this);
         break;
 
 		case 2://mostrar lista de liquidos cadastrados
-            listaNomesSintoma = new ControleSintoma(dados).getNomeSintoma(); // chamando nomes de liquidos cadastrados da controle
-            listaSintomaCadastrados = new JList<String>(listaNomesSintoma); // criando a lista de nomes de liquidos cadastrados
-            janela = new JFrame("Controle de Medicamento");
-            titulo = new JLabel("Liquidos Cadastrados");
+            listaNomeSintoma = new ControleSintoma(dados).getNomeSintoma(); // chamando nomes de liquidos cadastrados da controle
+            listaSintomaCadastrados = new JList<String>(listaNomeSintoma); // criando a lista de nomes de liquidos cadastrados
+            janela = new JFrame("Controle Sintoma");
+            titulo = new JLabel("Sintoma Cadastrados");
             cadastroSintoma = new JButton("Cadastrar");
             refreshSintoma = new JButton("Atualizar");
+            voltar = new JButton("Voltar");
             
             titulo.setFont(new Font("Arial", Font.BOLD, 20));
-            titulo.setBounds(230, 10, 600, 30);
-            listaSintomaCadastrados.setBounds(150, 50, 350, 120);
+            titulo.setBounds(140, 40, 500, 30);
+            listaSintomaCadastrados.setBounds(100, 100, 280, 230);
             listaSintomaCadastrados.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
             listaSintomaCadastrados.setVisibleRowCount(10);
             
 
-            cadastroSintoma.setBounds(200, 175, 110, 30);
-            refreshSintoma.setBounds(340, 175, 110, 30);
+            cadastroSintoma.setBounds(400, 300, 120, 30);
+            refreshSintoma.setBounds(400, 250, 120, 30);
+            voltar.setBounds(20, 20, 70, 30);
             
 
             janela.setLayout(null);
@@ -94,12 +101,14 @@ public class TelaListaDiario implements ActionListener, ListSelectionListener {
             janela.add(listaSintomaCadastrados);
             janela.add(cadastroSintoma);
             janela.add(refreshSintoma);
+            janela.add(voltar);
         
-            janela.setSize(700, 500);
+            janela.setSize(670, 500);
             janela.setVisible(true);
 
             cadastroSintoma.addActionListener(this);
             refreshSintoma.addActionListener(this);
+            voltar.addActionListener(this);
             listaSintomaCadastrados.addListSelectionListener(this);
 		break;
 		
@@ -119,6 +128,12 @@ public class TelaListaDiario implements ActionListener, ListSelectionListener {
      */
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
+        
+        if(src == voltar){
+			janela.dispose();
+			new TelaEscolhaDiario().mostrarDados(dados, 1);
+			// chama a tela que lista os usuarios cadastrados
+		}
         
         if (src == cadastroCiclo) { // botao cadastra comprimido
         	new TelaDetalheCiclo().inserirEditar(1, dados, 0);

@@ -1,5 +1,5 @@
 package controle;
-import objetos.*;
+import modelo.*;
 
 /**
  * Classe responsável pelo controle de comprimidos.

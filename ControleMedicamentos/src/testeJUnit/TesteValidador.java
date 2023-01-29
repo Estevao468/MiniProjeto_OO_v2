@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import controle.*;
-import objetos.*;
+import modelo.*;
 
 
 public class TesteValidador {

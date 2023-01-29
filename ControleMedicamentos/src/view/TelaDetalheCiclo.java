@@ -12,13 +12,15 @@ import controle.*;
  *
  */
 public class TelaDetalheCiclo  implements ActionListener{
-    private JFrame janela = new JFrame("Cadastro Medicamento");
+    private JFrame janela = new JFrame("Cadastro Diario");
 	private JLabel labelNome = new JLabel("Nome: ");
 	private JTextField valorNome;
 	private JLabel labelData = new JLabel("Data: ");
 	private JTextField valorData;
 	private JLabel labelObservacao = new JLabel("Observação: ");
 	private JTextField valorObservacao;
+	private JLabel labelIntensidade = new JLabel("Intensidade do Ciclo: ");
+	private JTextField valorIntensidade;
 	private JButton excluirButtonCiclo = new JButton("Excluir");
 	private JButton excluirButtonSintoma = new JButton("Excluir");
     private JButton salvarButton = new JButton("Salvar");
@@ -47,6 +49,7 @@ public class TelaDetalheCiclo  implements ActionListener{
             valorNome = new JTextField(dados.getCiclo()[pos].getNome(), 200);
             valorData = new JTextField(dados.getCiclo()[pos].getData(), 200);
             valorObservacao = new JTextField(dados.getCiclo()[pos].getObservacao(), 200);
+            valorIntensidade = new JTextField(dados.getCiclo()[pos].getIntensidadeCiclo(), 200);
             excluirButtonCiclo.setBounds(230, 200, 120, 30);
             
         } 
@@ -55,6 +58,7 @@ public class TelaDetalheCiclo  implements ActionListener{
             valorNome = new JTextField(200);
             valorData = new JTextField(200);
             valorObservacao = new JTextField(200);
+            valorIntensidade = new JTextField(200);
             excluirButtonSintoma.setBounds(230, 200, 120, 30);
             
         }
@@ -68,6 +72,9 @@ public class TelaDetalheCiclo  implements ActionListener{
         labelObservacao.setBounds(30, 80,150,25);
         valorObservacao.setBounds(180, 80, 180,25);
         
+        labelIntensidade.setBounds(30, 110,150,25);
+        valorIntensidade.setBounds(180, 110, 180,25);
+        
         salvarButton.setBounds(100, 200, 120, 30);
 
         this.janela.add(labelNome);
@@ -76,13 +83,15 @@ public class TelaDetalheCiclo  implements ActionListener{
         this.janela.add(valorData);
         this.janela.add(labelObservacao);
         this.janela.add(valorObservacao);
+        this.janela.add(labelIntensidade);
+        this.janela.add(valorIntensidade);
         this.janela.add(salvarButton);
         this.janela.add(excluirButtonCiclo);
         this.janela.add(excluirButtonSintoma);
 
         this.janela.setLayout(null);
 
-        this.janela.setSize(700, 500);
+        this.janela.setSize(520, 320);
 		this.janela.setVisible(true);
 
 		salvarButton.addActionListener(this);
@@ -114,6 +123,7 @@ public class TelaDetalheCiclo  implements ActionListener{
                 	dadosDiario[1] = valorNome.getText();
                     dadosDiario[2] = valorData.getText();
                     dadosDiario[3] = valorObservacao.getText();
+                    dadosDiario[4] = valorIntensidade.getText();
                     resultado = dados.inserirEditarCiclo(dadosDiario);
                     mensagemCadastroConcluido();
                 }
@@ -132,11 +142,11 @@ public class TelaDetalheCiclo  implements ActionListener{
     }
 
     public void mensagemCadastroConcluido(){
-        JOptionPane.showMessageDialog(null, "Medicamento Cadastrado");
+        JOptionPane.showMessageDialog(null, "Ciclo Cadastrado");
         janela.dispose();
     }
     public void mensagemDeletarConcluido(){
-        JOptionPane.showMessageDialog(null, "Medicamento Excluido");
+        JOptionPane.showMessageDialog(null, "Ciclo Excluido");
         janela.dispose();
     }
     

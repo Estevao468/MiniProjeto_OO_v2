@@ -11,13 +11,15 @@ import controle.*;
  * 
  */
 public class TelaDetalheSintoma implements ActionListener{
-	private JFrame janela = new JFrame("Cadastro Medicamento");
+	private JFrame janela = new JFrame("Cadastro Diario");
 	private JLabel labelNome = new JLabel("Nome: ");
 	private JTextField valorNome;
 	private JLabel labelData = new JLabel("Data: ");
 	private JTextField valorData;
 	private JLabel labelObservacao = new JLabel("Observação: ");
 	private JTextField valorObservacao;
+	private JLabel labelTs = new JLabel("Nível do Sintoma: ");
+	private JTextField valorTs;
 	private JButton excluirButtonSintoma = new JButton("Excluir");
     private JButton salvarButton = new JButton("Salvar");
     private String[] dadosDiario = new String[50];
@@ -45,6 +47,7 @@ public class TelaDetalheSintoma implements ActionListener{
             valorNome = new JTextField(dados.getSintoma()[pos].getNome(), 200);
             valorData = new JTextField(dados.getSintoma()[pos].getData(), 200);
             valorObservacao = new JTextField(dados.getSintoma()[pos].getObservacao(), 200);
+            valorTs = new JTextField(dados.getSintoma()[pos].getTipoSintoma(), 200);
             excluirButtonSintoma.setBounds(230, 200, 120, 30);
             
         } 
@@ -53,6 +56,7 @@ public class TelaDetalheSintoma implements ActionListener{
             valorNome = new JTextField(200);
             valorData = new JTextField(200);
             valorObservacao = new JTextField(200);
+            valorTs = new JTextField(200);
             excluirButtonSintoma.setBounds(230, 200, 120, 30);
             
         }
@@ -65,6 +69,9 @@ public class TelaDetalheSintoma implements ActionListener{
         
         labelObservacao.setBounds(30, 80,150,25);
         valorObservacao.setBounds(180, 80, 180,25);
+        
+        labelTs.setBounds(30, 110,150,25);
+        valorTs.setBounds(180, 110, 180,25);
         salvarButton.setBounds(100, 200, 120, 30);
 
         this.janela.add(labelNome);
@@ -73,12 +80,14 @@ public class TelaDetalheSintoma implements ActionListener{
         this.janela.add(valorData);
         this.janela.add(labelObservacao);
         this.janela.add(valorObservacao);
+        this.janela.add(labelTs);
+        this.janela.add(valorTs);
         this.janela.add(salvarButton);
         this.janela.add(excluirButtonSintoma);
 
         this.janela.setLayout(null);
 
-        this.janela.setSize(700, 500);
+        this.janela.setSize(520, 320);
 		this.janela.setVisible(true);
 
 		salvarButton.addActionListener(this);
@@ -109,6 +118,7 @@ public class TelaDetalheSintoma implements ActionListener{
                 	dadosDiario[1] = valorNome.getText();
                     dadosDiario[2] = valorData.getText();
                     dadosDiario[3] = valorObservacao.getText();
+                    dadosDiario[4] = valorTs.getText();
                     resultado = dados.inserirEditarSintoma(dadosDiario);
                     mensagemCadastroConcluido();
                 }
@@ -127,11 +137,11 @@ public class TelaDetalheSintoma implements ActionListener{
     }
 
     public void mensagemCadastroConcluido(){
-        JOptionPane.showMessageDialog(null, "Medicamento Cadastrado");
+        JOptionPane.showMessageDialog(null, "Sintoma Cadastrado");
         janela.dispose();
     }
     public void mensagemDeletarConcluido(){
-        JOptionPane.showMessageDialog(null, "Medicamento Excluido");
+        JOptionPane.showMessageDialog(null, "Sintoma Excluido");
         janela.dispose();
     }
     

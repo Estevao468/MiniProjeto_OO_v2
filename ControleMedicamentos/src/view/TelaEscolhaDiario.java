@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.event.*;
 import controle.*;
-import objetos.*;
+import modelo.*;
 
 /**
  * Classe referente a criação da tela de escolha de medicamento
@@ -17,9 +17,10 @@ import objetos.*;
  */
 public class TelaEscolhaDiario implements ActionListener {
 	
-	private static JFrame janela = new JFrame("Controle de Medicamento");
-	private static JLabel titulo = new JLabel("Menu");
-	private static JButton ciclo = new JButton("Ciclo");
+	private JFrame janela = new JFrame("Controle do Diario");
+	private JLabel titulo = new JLabel("Menu");
+	private JButton ciclo = new JButton("Ciclo");
+	private JButton voltar = new JButton("Voltar");
 	private static JButton sintoma = new JButton("Sintoma");
 	public static ControleDados dados = new ControleDados();
 	private int opcao;
@@ -31,23 +32,26 @@ public class TelaEscolhaDiario implements ActionListener {
 	public TelaEscolhaDiario() {
 		 
 		titulo.setFont(new Font("Arial", Font.BOLD, 30));
-		titulo.setBounds(285, 10, 600, 30);
+		titulo.setBounds(280, 80, 600, 30);
 
-		ciclo.setBounds(355, 70, 140, 100);
-		sintoma.setBounds(170, 70, 140, 100);
+		ciclo.setBounds(360, 200, 100, 80);
+		sintoma.setBounds(190, 200, 100, 80);
+		voltar.setBounds(20, 20, 70, 30);
 		
 		janela.setLayout(null);
 		
 		janela.add(titulo);
 		janela.add(ciclo);
 		janela.add(sintoma);
+		janela.add(voltar);
 		
 		
-		janela.setSize(700, 500);
+		janela.setSize(670, 500);
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		janela.setVisible(true);
 
 		ciclo.addActionListener(this);
+		voltar.addActionListener(this);
 		sintoma.addActionListener(this);
 		 
 	}
@@ -70,6 +74,16 @@ public class TelaEscolhaDiario implements ActionListener {
 			new TelaListaDiario().mostrarDados(dados, 2);
 			
 		}
+		 if(src == voltar){
+				janela.dispose();
+				new TelaMenu().mostrarDados(dados, 1);
+				// chama a tela que lista os usuarios cadastrados
+			}
+		
+	}
+
+	public void mostrarDados(ControleDados dados2, int i) {
+		// TODO Stub de método gerado automaticamente
 		
 	}
 		
