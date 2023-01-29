@@ -19,11 +19,11 @@ public class TelaListaUsuarios implements ActionListener, ListSelectionListener 
 
     private JFrame janela;
     private JLabel titulo;
-    private JButton cadastroSintoma;
-    private JButton refreshSintoma;
+    private JButton cadastroUsuario;
+    private JButton refreshUsuario;
     private JButton medicamentosGerais;
     private static ControleDados dados;
-    private JList<String> listaSintomasCadastrados;
+    private JList<String> listaUsuarioCadastrados;
     private String[] listaSintomas = new String[50];
 	
     /**
@@ -36,42 +36,42 @@ public class TelaListaUsuarios implements ActionListener, ListSelectionListener 
 		dados = d;
 	      
         listaSintomas = new ControleSintomas(dados).getNomeSintoma(); // pega os nomes dos sintomas cadastrados
-        listaSintomasCadastrados = new JList<String>(listaSintomas); // adiciona os nomes dos sintomas cadastrados 
+        listaUsuarioCadastrados = new JList<String>(listaSintomas); // adiciona os nomes dos sintomas cadastrados 
         janela = new JFrame("Controle de Sintomas");
         titulo = new JLabel("Lista de Sintomas");
        
         //botos na tela
-        cadastroSintoma = new JButton("Cadastrar");
-        refreshSintoma = new JButton("Atualizar");
+        cadastroUsuario = new JButton("Cadastrar");
+        cadastroUsuario = new JButton("Atualizar");
         medicamentosGerais = new JButton("Medicamentos");
 
         //tela com a lista dos Sintomas
         titulo.setFont(new Font("Arial", Font.BOLD, 20));
         titulo.setBounds(200, 10, 600, 30);
         
-        listaSintomasCadastrados.setBounds(150, 100, 350, 120);
-        listaSintomasCadastrados.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-        listaSintomasCadastrados.setVisibleRowCount(10);
+        listaUsuarioCadastrados.setBounds(150, 100, 350, 120);
+        listaUsuarioCadastrados.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        listaUsuarioCadastrados.setVisibleRowCount(10);
         
         medicamentosGerais.setBounds(260, 300, 115, 30);
-        cadastroSintoma.setBounds(200, 250, 115, 30);
-        refreshSintoma.setBounds(340, 250, 115, 30);
+        cadastroUsuario.setBounds(200, 250, 115, 30);
+        cadastroUsuario.setBounds(340, 250, 115, 30);
         
         janela.setLayout(null);
 
         janela.add(titulo);
-        janela.add(listaSintomasCadastrados);
-        janela.add(cadastroSintoma);
-        janela.add(refreshSintoma);
+        janela.add(listaUsuarioCadastrados);
+        janela.add(cadastroUsuario);
+        janela.add(cadastroUsuario);
         janela.add(medicamentosGerais);
 
         janela.setSize(600, 500);
         janela.setVisible(true);
 
-        cadastroSintoma.addActionListener(this);
-        refreshSintoma.addActionListener(this);
+        cadastroUsuario.addActionListener(this);
+        cadastroUsuario.addActionListener(this);
         medicamentosGerais.addActionListener(this);
-        listaSintomasCadastrados.addListSelectionListener(this);
+        listaUsuarioCadastrados.addListSelectionListener(this);
 
     }
 	
@@ -85,14 +85,14 @@ public class TelaListaUsuarios implements ActionListener, ListSelectionListener 
 		Object src = e.getSource();
         
 		
-        if (src == cadastroSintoma) { // se o botão cadastroUsuario for ativado, entao ativa a tela de cadastro do Sintoma
-            new TelaDetalheSintoma().inserirEditar(1, dados, this, 0);
+        if (src == cadastroUsuario) { // se o botão cadastroSintoma for ativado, entao ativa a tela de cadastro do Sintoma
+            new TelaListaUsuarios().inserirEditarUsuario(1, dados, this, 0);
         }
         
         
-        if (src == refreshSintoma) { // se o botão refreshUsuario for ativado, entao atualizara os usuarios
-            listaSintomasCadastrados.setListData(new ControleSintomas(dados).getNomeSintoma());			
-			listaSintomasCadastrados.updateUI();
+        if (src == cadastroUsuario) { // se o botão refreshUsuario for ativado, entao atualizara os usuarios
+            listaUsuarioCadastrados.setListData(new ControleSintomas(dados).getNomeSintoma());			
+			listaUsuarioCadastrados.updateUI();
         }
         
         
@@ -112,10 +112,16 @@ public class TelaListaUsuarios implements ActionListener, ListSelectionListener 
     public void valueChanged(ListSelectionEvent e) {
         Object src = e.getSource();
 
-        if (e.getValueIsAdjusting() && src == listaSintomasCadastrados) { // seleciona um usuario
-        	new TelaDetalheSintoma().inserirEditar(1, dados, this, listaSintomasCadastrados.getSelectedIndex());
+        if (e.getValueIsAdjusting() && src == listaUsuarioCadastrados) { // seleciona um usuario
+        	new TelaListaUsuarios().inserirEditarUsuario(1, dados, this, listaUsuarioCadastrados.getSelectedIndex());
         }
         
     }
+
+	private void inserirEditarUsuario(int i, ControleDados dados2, TelaListaUsuarios telaListaUsuarios,
+			int selectedIndex) {
+		// TODO Stub de método gerado automaticamente
+		
+	}
 
 }

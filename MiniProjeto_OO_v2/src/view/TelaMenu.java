@@ -70,13 +70,25 @@ public class TelaMenu implements ActionListener {
 
 		if(src == sintomas) {
 			janela.dispose();
-			new TelaEscolhaMedicamento();
+			new TelaDetalheSintoma().mostrarDados(dados);
 			
-		}	// chama a tela de escolha do tipo de medicamentos
+		}	// chama a tela de escolha do tipo de 
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Stub de método gerado automaticamente
+        Object src = e.getSource();
+		
+		if(src == usuario){
+			janela.dispose();
+			new TelaListaUsuarios().mostrarDados(dados, 1);
+			// chama a tela que lista os usuarios cadastrados
+		}
+
+		if(src == sintomas) {
+			janela.dispose();
+			new TelaDetalheSintoma().mostrarDados(dados);
+			
+		}	// chama a tela de escolha do tipo
 		
 	}
 }
